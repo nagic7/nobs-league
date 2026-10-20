@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NO BS League Prize Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout: one column scoreboard, summary tiles → this week → tables; dark arena look */
+:root{
+  --bg:#0E1A2B; --surface:#16243A; --line:#273952; --fg:#F2EFE8; --muted:#A3AFC0;
+  --accent:#F28C28; --gold:#F2C14E; --good:#5BC08A;
+  --display:'Barlow Condensed','Arial Narrow',sans-serif; --body:'Barlow','Helvetica Neue',Arial,sans-serif;
+  color-scheme:dark;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.45}
+.wrap{max-width:980px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-size:clamp(40px,8vw,72px);line-height:.95;margin:6px 0 8px;letter-spacing:.01em;text-wrap:balance}
+h2{font-family:var(--display);font-size:24px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px;color:var(--muted)}
+.sub{color:var(--muted);margin:0}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tile{background:var(--surface);border-radius:12px;padding:16px 18px}
+.tile .v{font-family:var(--display);font-size:34px;font-variant-numeric:tabular-nums}
+.tile .l{color:var(--muted);font-size:14px}
+.awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.award{border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.award .k{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.award .t{font-size:20px;font-weight:600;margin-top:4px}
+.award .d{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+.award.main{background:var(--gold);border-color:var(--gold);color:#0E1A2B}
+.award.main .k,.award.main .d{color:#0E1A2B}
+.tbl{overflow-x:auto;background:var(--surface);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+.pending{color:var(--muted)}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.pill.ok{background:rgba(91,192,138,.18);color:var(--good)}
+.pill.no{background:rgba(242,140,40,.16);color:var(--accent)}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:22px;color:var(--muted)}
+.bar{height:8px;border-radius:4px;background:var(--accent);min-width:2px}
+.race td:nth-child(3){width:45%}
+.foot{color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.grid2>div{min-width:0}
+.tag{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-left:6px}
+h3{font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
+.note{color:var(--muted);font-size:14px;margin:8px 0 0}
+@media (max-width:640px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}}
+*{box-sizing:border-box}body{margin:0}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">NO BS League · 2026–27 NBA</div>
+    <h1>Prize Tracker</h1>
+    <p class="sub" id="updated">Updated after each scoring week.</p>
+  </header>
+
+  <section class="tiles" id="tiles"></section>
+
+  <section>
+    <h2 id="weekTitle">This week</h2>
+    <div id="thisWeek"></div>
+  </section>
+
+  <section>
+    <h2>Standings</h2>
+    <div id="standings"></div>
+  </section>
+
+  <section>
+    <h2>Weekly High Score · ₹150 a week</h2>
+    <div class="tbl"><table><thead><tr><th>Week</th><th>Dates</th><th>Winner</th><th class="num">Points</th><th>Prize</th></tr></thead><tbody id="weekly"></tbody></table></div>
+  </section>
+
+  <section>
+    <h2>Weekly bragging rights</h2>
+    <div id="weeklyAwards"></div>
+  </section>
+
+  <section>
+    <h2>Monthly MVP · ₹300 a month</h2>
+    <div class="tbl"><table><thead><tr><th>Month</th><th>Winner</th><th class="num">Points</th><th>Prize</th></tr></thead><tbody id="months"></tbody></table></div>
+    <h2 style="margin-top:20px" id="raceTitle">Current month race</h2>
+    <div id="race"></div>
+  </section>
+
+  <section>
+    <h2>Monthly bragging rights</h2>
+    <div class="tbl"><table><thead><tr><th>Month</th><th>Triple-Double Hunter</th><th>Bad Boy Award</th><th>Waiver Wizard</th></tr></thead><tbody id="monthlyAwards"></tbody></table></div>
+    <p class="note">Triple-Double Hunter: most triple-doubles. Bad Boy: most points lost to technicals, flagrants and ejections. Waiver Wizard: most points from a player picked up off waivers or free agency.</p>
+  </section>
+
+  <section>
+    <h2>Season awards</h2>
+    <div class="awards" id="seasonAwards"></div>
+  </section>
+
+  <section>
+    <h2>Payouts ledger</h2>
+    <div id="ledger"></div>
+  </section>
+
+  <p class="foot">Buy-in ₹1,500 × 10 = ₹15,000. Playoffs: Champion ₹6,000 · Runner-up ₹2,600 · 3rd ₹1,000 · Regular-season #1 seed ₹750. Extras are for bragging rights. Weeks count toward the month they end in; late-October weeks count toward November.</p>
+</div>
+
+<script>
+/* League data lives in data.json, updated after each scoring week. */
+let DATA = null;
+
+const $ = id => document.getElementById(id);
+const inr = n => "₹" + Number(n).toLocaleString("en-IN");
+const fmt = n => Number(n).toLocaleString("en-IN", {maximumFractionDigits:1});
+const teamName = id => (DATA.teams.find(t => t.id === id) || {}).name || id || "—";
+const el = (tag, attrs = {}, kids = []) => { const e = document.createElement(tag); for (const [k,v] of Object.entries(attrs)) { if (k === "text") e.textContent = v; else e.setAttribute(k, v); } kids.forEach(c => e.append(c)); return e; };
+const pill = ok => el("span", {class: "pill " + (ok ? "ok" : "no"), text: ok ? "Paid" : "Due"});
+const shortDate = s => s ? new Date(s + "T00:00:00").toLocaleDateString("en-GB", {day:"numeric", month:"short"}) : "";
+const empty = text => el("div", {class:"empty", text});
+const table = (heads, rows, numCols = []) => el("div", {class:"tbl"}, [el("table", {}, [
+  el("thead", {}, [el("tr", {}, heads.map((h, i) => el("th", {class: numCols.includes(i) ? "num" : "", text:h})))]),
+  el("tbody", {}, rows.map(r => el("tr", {}, r.map((c, i) => c instanceof Node ? el("td", {}, [c]) : el("td", {class: numCols.includes(i) ? "num" : "", text:c})))))])]);
+const card = (k, t, d, main) => el("div", {class:"award" + (main ? " main" : "")}, [el("div", {class:"k", text:k}), el("div", {class:"t", text:t}), el("div", {class:"d", text:d})]);
+
+function standings() {
+  const s = {}; DATA.teams.forEach(t => s[t.id] = {id:t.id, w:0, l:0, t:0, pf:0, pa:0});
+  DATA.weeks.forEach(wk => {
+    Object.entries(wk.scores || {}).forEach(([id, p]) => { if (s[id]) s[id].pf += p; });
+    Object.entries(wk.against || {}).forEach(([id, p]) => { if (s[id]) s[id].pa += p; });
+    Object.entries(wk.results || {}).forEach(([id, r]) => { if (s[id]) s[id][r === "W" ? "w" : r === "L" ? "l" : "t"]++; });
+  });
+  return Object.values(s).sort((a, b) => (b.w + b.t / 2) - (a.w + a.t / 2) || b.pf - a.pf || a.pa - b.pa);
+}
+
+function winnings() {
+  const w = {}; DATA.teams.forEach(t => w[t.id] = 0);
+  DATA.weeks.forEach(wk => { if (wk.highScore) w[wk.highScore.team] = (w[wk.highScore.team] || 0) + DATA.weeklyPrize; });
+  DATA.months.forEach(m => { if (m.winner) w[m.winner.team] = (w[m.winner.team] || 0) + DATA.monthlyPrize; });
+  const s = DATA.season, add = (id, amt) => { if (id) w[id] = (w[id] || 0) + amt; };
+  add(s.seed1, 750); add(s.champion, 6000); add(s.runnerUp, 2600); add(s.third, 1000);
+  return w;
+}
+
+function render() {
+  if (DATA.updated) $("updated").textContent = "Updated " + new Date(DATA.updated + "T00:00:00").toLocaleDateString("en-GB", {weekday:"long", day:"numeric", month:"long"});
+  const win = winnings();
+  const paidOut = Object.values(win).reduce((a, b) => a + b, 0);
+  const paidCount = DATA.teams.filter(t => t.paid).length || DATA.buyInsPaid;
+  const played = DATA.weeks.length > 0;
+  const st = standings();
+
+  const tiles = [[inr(DATA.pool), "Prize pool"], [paidCount + "/10", "Buy-ins paid"], [inr(paidOut), "Won so far"], [DATA.weeks.length + "/" + DATA.totalWeeks, "Weeks played"]];
+  $("tiles").replaceChildren(...tiles.map(([v, l]) => el("div", {class:"tile"}, [el("div", {class:"v", text:v}), el("div", {class:"l", text:l})])));
+
+  /* This week */
+  const last = DATA.weeks[DATA.weeks.length - 1];
+  if (!last) {
+    $("weekTitle").textContent = "Week 1 · 20 Oct – 25 Oct";
+    $("thisWeek").replaceChildren(empty("Results land here on Monday 26 October: the high score winner, plus Heartbreaker, Lucky Escape, Blowout King, Nail-biter and Bench Blunder."));
+  } else {
+    $("weekTitle").textContent = "Week " + last.n + " · " + shortDate(last.start) + " – " + shortDate(last.end);
+    const c = [];
+    if (last.highScore) c.push(card("High Score · " + inr(DATA.weeklyPrize), teamName(last.highScore.team), fmt(last.highScore.pts) + " pts", true));
+    if (last.heartbreaker) c.push(card("Heartbreaker", teamName(last.heartbreaker.team), fmt(last.heartbreaker.pts) + " pts and still lost"));
+    if (last.luckyEscape) c.push(card("Lucky Escape", teamName(last.luckyEscape.team), "won with " + fmt(last.luckyEscape.pts) + " pts"));
+    if (last.blowout) c.push(card("Blowout King", teamName(last.blowout.team), "won by " + fmt(last.blowout.margin) + " pts"));
+    if (last.nailbiter) c.push(card("Nail-biter", last.nailbiter.teams.map(teamName).join(" vs "), "decided by " + fmt(last.nailbiter.margin) + " pts"));
+    if (last.benchBlunder) c.push(card("Bench Blunder", teamName(last.benchBlunder.team), fmt(last.benchBlunder.pts) + " pts left on the bench"));
+    $("thisWeek").replaceChildren(el("div", {class:"awards"}, c));
+  }
+
+  /* Standings */
+  $("standings").replaceChildren(table(["#", "Team", "W-L-T", "Points for", "Points against"],
+    st.map((r, i) => [String(i + 1), teamName(r.id), r.w + "-" + r.l + "-" + r.t, fmt(r.pf), fmt(r.pa)]), [3, 4]));
+
+  /* Weekly high score */
+  const rows = [];
+  for (let n = 1; n <= DATA.totalWeeks; n++) {
+    const wk = DATA.weeks.find(w => w.n === n);
+    rows.push(wk && wk.highScore
+      ? el("tr", {}, [el("td", {text:"Week " + n}), el("td", {text:shortDate(wk.start) + " – " + shortDate(wk.end)}), el("td", {text:teamName(wk.highScore.team)}), el("td", {class:"num", text:fmt(wk.highScore.pts)}), el("td", {}, [pill(wk.prizePaid)])])
+      : el("tr", {class:"pending"}, [el("td", {text:"Week " + n}), el("td", {text:"—"}), el("td", {text:"Not played yet"}), el("td", {class:"num", text:"—"}), el("td", {text:"—"})]));
+  }
+  $("weekly").replaceChildren(...rows);
+
+  /* Weekly bragging rights history */
+  const nm = a => a ? teamName(a.team) : "—";
+  $("weeklyAwards").replaceChildren(played
+    ? table(["Week", "Heartbreaker", "Lucky Escape", "Blowout King", "Nail-biter", "Bench Blunder"],
+        [...DATA.weeks].reverse().map(w => ["Week " + w.n, nm(w.heartbreaker), nm(w.luckyEscape), nm(w.blowout), w.nailbiter ? w.nailbiter.teams.map(teamName).join(" vs ") : "—", nm(w.benchBlunder)]))
+    : empty("Each week's Heartbreaker, Lucky Escape, Blowout King, Nail-biter and Bench Blunder are listed here, newest first."));
+
+  /* Monthly MVP */
+  const monthTotals = key => { const t = {}; DATA.weeks.filter(w => w.month === key).forEach(w => Object.entries(w.scores || {}).forEach(([id, p]) => t[id] = (t[id] || 0) + p)); return t; };
+  $("months").replaceChildren(...DATA.months.map(m => m.winner
+    ? el("tr", {}, [el("td", {text:m.label}), el("td", {text:teamName(m.winner.team)}), el("td", {class:"num", text:fmt(m.winner.pts)}), el("td", {}, [pill(m.prizePaid)])])
+    : el("tr", {class:"pending"}, [el("td", {text:m.label}), el("td", {text:"In progress or not started"}), el("td", {class:"num", text:"—"}), el("td", {text:"—"})])));
+  const open = DATA.months.find(m => !m.winner);
+  const bars = (totals, emptyText) => {
+    const list = Object.entries(totals).sort((a, b) => b[1] - a[1]);
+    if (!list.length) return empty(emptyText);
+    const max = list[0][1] || 1;
+    return el("div", {class:"tbl race"}, [el("table", {}, [el("tbody", {}, list.map(([id, p], i) =>
+      el("tr", {}, [el("td", {text:String(i + 1)}), el("td", {text:teamName(id)}), el("td", {}, [Object.assign(el("div", {class:"bar"}), {style:"width:" + (p / max * 100) + "%"})]), el("td", {class:"num", text:fmt(p)})])))])]);
+  };
+  $("raceTitle").textContent = open ? open.label + " race" : "Monthly race";
+  $("race").replaceChildren(bars(open ? monthTotals(open.key) : {}, "The race fills in once this month's weeks are played. Week 1 counts toward November."));
+
+  /* Monthly extras */
+  const ex = (m, k, f) => (m.extras && m.extras[k]) ? f(m.extras[k]) : (m.winner ? "—" : "TBD");
+  $("monthlyAwards").replaceChildren(...DATA.months.map(m => el("tr", {class: m.extras ? "" : "pending"}, [
+    el("td", {text:m.label}),
+    el("td", {text:ex(m, "tdHunter", a => teamName(a.team) + " (" + a.count + ")")}),
+    el("td", {text:ex(m, "badBoy", a => teamName(a.team) + " (−" + fmt(a.pts) + ")")}),
+    el("td", {text:ex(m, "waiverWizard", a => teamName(a.team) + " · " + a.player + " (" + fmt(a.pts) + ")")})])));
+
+  /* Season awards */
+  const sa = DATA.seasonAwards, set = (a, fallback) => a ? [teamName(a.team), a.note || ""] : ["TBD", fallback];
+  const pm = played ? [...st].sort((a, b) => b.pf - a.pf)[0] : null;
+  const ul = played ? [...st].sort((a, b) => b.pa - a.pa)[0] : null;
+  const ws = played ? st[st.length - 1] : null;
+  let comeback = set(sa.comebackKid, DATA.christmasRanks ? "Christmas standings saved. Biggest climb by the end of the regular season wins." : "Standings get saved at Christmas. Biggest climb after that wins.");
+  if (!sa.comebackKid && DATA.christmasRanks && played) {
+    const now = {}; st.forEach((r, i) => now[r.id] = i + 1);
+    const best = Object.keys(now).map(id => [id, (DATA.christmasRanks[id] || now[id]) - now[id]]).sort((a, b) => b[1] - a[1])[0];
+    if (best && best[1] > 0) comeback = ["Leader: " + teamName(best[0]), "up " + best[1] + " places since Christmas"];
+  }
+  $("seasonAwards").replaceChildren(
+    card("Points Machine", pm ? teamName(pm.id) : "TBD", pm ? "leads with " + fmt(pm.pf) + " points for" : "most total points across the regular season"),
+    card("Unluckiest", ul ? teamName(ul.id) : "TBD", ul ? fmt(ul.pa) + " points against so far" : "most points scored against you"),
+    card("Comeback Kid", ...comeback),
+    card("Iron Manager", ...set(sa.ironManager, "never an empty or injured player in the lineup")),
+    card("Trade of the Year", ...set(sa.tradeOfTheYear, "league vote at the end of the season")),
+    card("Steal of the Draft", ...set(sa.stealOfDraft, "most points per auction dollar, judged at the All-Star break")),
+    card("Wooden Spoon", ws ? teamName(ws.id) : "TBD", ws ? "currently last. The champion picks their team name for next season" : "last place picks up the forfeit"));
+
+  /* Ledger */
+  $("ledger").replaceChildren(table(["Team", "Buy-in", "Won"],
+    [...DATA.teams].sort((a, b) => (win[b.id] || 0) - (win[a.id] || 0)).map(t => [teamName(t.id), pill(t.paid), inr(win[t.id] || 0)]), [2]));
+}
+fetch("data.json?v=" + Date.now(), {cache:"no-store"}).then(r => r.json()).then(d => { DATA = d; render(); }).catch(() => { document.getElementById("updated").textContent = "Could not load the latest results. Refresh to try again."; });
+</script>
+
+</body>
+</html>

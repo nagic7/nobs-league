@@ -1,0 +1,92 @@
+{
+ "updated": "2026-10-20",
+ "buyInsPaid": 10,
+ "buyIn": 1500,
+ "pool": 15000,
+ "weeklyPrize": 150,
+ "monthlyPrize": 300,
+ "totalWeeks": 21,
+ "teams": [
+  {
+   "id": "anirudh1525",
+   "name": "Anirudh1525",
+   "paid": true
+  },
+  {
+   "id": "nagic89",
+   "name": "nagic89",
+   "paid": true
+  },
+  {
+   "id": "addy77",
+   "name": "Addy77",
+   "paid": true
+  },
+  {
+   "id": "yessae",
+   "name": "yessae",
+   "paid": true
+  },
+  {
+   "id": "mohit_khatri",
+   "name": "Mohit_Khatri",
+   "paid": true
+  },
+  {
+   "id": "daddygiannis",
+   "name": "DaddyGiannis",
+   "paid": true
+  },
+  {
+   "id": "mannan7",
+   "name": "Mannan7",
+   "paid": true
+  },
+  {
+   "id": "process0910",
+   "name": "Process0910",
+   "paid": true
+  },
+  {
+   "id": "tarunsajnani",
+   "name": "tarunsajnani",
+   "paid": true
+  },
+  {
+   "id": "akhil24",
+   "name": "Akhil24",
+   "paid": true
+  }
+ ],
+ "weeks": [],
+ "months": [
+  {
+   "key": "2026-11",
+   "label": "November"
+  },
+  {
+   "key": "2026-12",
+   "label": "December"
+  },
+  {
+   "key": "2027-01",
+   "label": "January"
+  },
+  {
+   "key": "2027-02",
+   "label": "February"
+  },
+  {
+   "key": "2027-03",
+   "label": "March"
+  }
+ ],
+ "seasonAwards": {
+  "comebackKid": null,
+  "ironManager": null,
+  "tradeOfTheYear": null,
+  "stealOfDraft": null
+ },
+ "christmasRanks": null,
+ "season": {}
+}
