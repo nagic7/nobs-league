@@ -25,9 +25,18 @@ h2{font-family:var(--display);font-size:24px;letter-spacing:.06em;text-transform
 .tile .v{font-family:var(--display);font-size:34px;font-variant-numeric:tabular-nums}
 .tile .l{color:var(--muted);font-size:14px}
 .awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.award{border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.award{border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:48px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start;align-content:start;grid-auto-rows:min-content;background:var(--surface)}
+.award .ic{grid-row:1/4;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(242,140,40,.14);color:var(--accent)}
+.award .ic svg{width:26px;height:26px}
+.award.tbd{background:transparent;border-style:dashed}
+.award.tbd .t{color:var(--muted)}
+.award.main .ic{background:rgba(14,26,43,.14);color:#0E1A2B}
+.award.main.tbd .t{color:#0E1A2B;opacity:.75}
 .award .k{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-.award .t{font-size:20px;font-weight:600;margin-top:4px}
+.award .t{font-size:20px;font-weight:600}
+.awards.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.awards.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.awards.three{grid-template-columns:1fr}}
 .award .d{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
 .award.main{background:var(--gold);border-color:var(--gold);color:#0E1A2B}
 .award.main .k,.award.main .d{color:#0E1A2B}
@@ -127,7 +136,23 @@ const empty = text => el("div", {class:"empty", text});
 const table = (heads, rows, numCols = []) => el("div", {class:"tbl"}, [el("table", {}, [
   el("thead", {}, [el("tr", {}, heads.map((h, i) => el("th", {class: numCols.includes(i) ? "num" : "", text:h})))]),
   el("tbody", {}, rows.map(r => el("tr", {}, r.map((c, i) => c instanceof Node ? el("td", {}, [c]) : el("td", {class: numCols.includes(i) ? "num" : "", text:c})))))])]);
-const card = (k, t, d, main) => el("div", {class:"award" + (main ? " main" : "")}, [el("div", {class:"k", text:k}), el("div", {class:"t", text:t}), el("div", {class:"d", text:d})]);
+const ICON_PATHS = {
+  trophy:'<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+  heartbreak:'<path d="M12 20s-7-4.4-9-9a4.6 4.6 0 0 1 9-2.5A4.6 4.6 0 0 1 21 11c-2 4.6-9 9-9 9z"/><path d="M12 8.5l-1.5 3 3 1.5-1.5 3.5"/>',
+  clover:'<circle cx="9" cy="9" r="3"/><circle cx="15" cy="9" r="3"/><circle cx="9" cy="15" r="3"/><circle cx="15" cy="15" r="3"/><path d="M12 12l5 9"/>',
+  crown:'<path d="M3 8l4 4 5-7 5 7 4-4-2 11H5L3 8z"/><path d="M5 19h14"/>',
+  timer:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M10 2h4M12 2v3"/>',
+  bench:'<path d="M3 11h18M5 11V7h14v4M5 11v8M19 11v8M3 15h18"/>',
+  bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>',
+  rain:'<path d="M7 15a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.5 1.5A3.5 3.5 0 0 1 17 15H7z"/><path d="M8 19l-1 2M12 19l-1 2M16 19l-1 2"/>',
+  rise:'<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
+  shield:'<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/>',
+  swap:'<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
+  tag:'<path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+  spoon:'<ellipse cx="12" cy="7" rx="4" ry="5"/><path d="M12 12v10"/>'
+};
+const icon = name => { const d = el("div", {class:"ic", "aria-hidden":"true"}); d.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + (ICON_PATHS[name] || "") + '</svg>'; return d; };
+const card = (k, t, d, main, ic) => el("div", {class:"award" + (main ? " main" : "") + (t === "TBD" ? " tbd" : "")}, [icon(ic), el("div", {class:"k", text:k}), el("div", {class:"t", text:t}), el("div", {class:"d", text:d})]);
 
 function standings() {
   const s = {}; DATA.teams.forEach(t => s[t.id] = {id:t.id, w:0, l:0, t:0, pf:0, pa:0});
@@ -161,20 +186,16 @@ function render() {
 
   /* This week */
   const last = DATA.weeks[DATA.weeks.length - 1];
-  if (!last) {
-    $("weekTitle").textContent = "Week 1 · 20 Oct – 25 Oct";
-    $("thisWeek").replaceChildren(empty("Results land here on Monday 26 October: the high score winner, plus Heartbreaker, Lucky Escape, Blowout King, Nail-biter and Bench Blunder."));
-  } else {
-    $("weekTitle").textContent = "Week " + last.n + " · " + shortDate(last.start) + " – " + shortDate(last.end);
-    const c = [];
-    if (last.highScore) c.push(card("High Score · " + inr(DATA.weeklyPrize), teamName(last.highScore.team), fmt(last.highScore.pts) + " pts", true));
-    if (last.heartbreaker) c.push(card("Heartbreaker", teamName(last.heartbreaker.team), fmt(last.heartbreaker.pts) + " pts and still lost"));
-    if (last.luckyEscape) c.push(card("Lucky Escape", teamName(last.luckyEscape.team), "won with " + fmt(last.luckyEscape.pts) + " pts"));
-    if (last.blowout) c.push(card("Blowout King", teamName(last.blowout.team), "won by " + fmt(last.blowout.margin) + " pts"));
-    if (last.nailbiter) c.push(card("Nail-biter", last.nailbiter.teams.map(teamName).join(" vs "), "decided by " + fmt(last.nailbiter.margin) + " pts"));
-    if (last.benchBlunder) c.push(card("Bench Blunder", teamName(last.benchBlunder.team), fmt(last.benchBlunder.pts) + " pts left on the bench"));
-    $("thisWeek").replaceChildren(el("div", {class:"awards"}, c));
-  }
+  $("weekTitle").textContent = last ? "Week " + last.n + " · " + shortDate(last.start) + " – " + shortDate(last.end) : "Week 1 · 20 Oct – 25 Oct · results Monday 26 Oct";
+  const w = last || {}, v = (a, f, fallback) => a ? [teamName(a.team), f(a)] : ["TBD", fallback];
+  $("thisWeek").replaceChildren(el("div", {class:"awards three"}, [
+    card("High Score · " + inr(DATA.weeklyPrize), ...v(w.highScore, a => fmt(a.pts) + " pts", "top score of the week, win or lose"), true, "trophy"),
+    card("Heartbreaker", ...v(w.heartbreaker, a => fmt(a.pts) + " pts and still lost", "highest score that still lost"), false, "heartbreak"),
+    card("Lucky Escape", ...v(w.luckyEscape, a => "won with " + fmt(a.pts) + " pts", "lowest score that still won"), false, "clover"),
+    card("Blowout King", ...v(w.blowout, a => "won by " + fmt(a.margin) + " pts", "biggest winning margin"), false, "crown"),
+    card("Nail-biter", ...(w.nailbiter ? [w.nailbiter.teams.map(teamName).join(" vs "), "decided by " + fmt(w.nailbiter.margin) + " pts"] : ["TBD", "closest matchup of the week"]), false, "timer"),
+    card("Bench Blunder", ...v(w.benchBlunder, a => fmt(a.pts) + " pts left on the bench", "most points left sitting on the bench"), false, "bench")
+  ]));
 
   /* Standings */
   $("standings").replaceChildren(table(["#", "Team", "W-L-T", "Points for", "Points against"],
@@ -233,13 +254,13 @@ function render() {
     if (best && best[1] > 0) comeback = ["Leader: " + teamName(best[0]), "up " + best[1] + " places since Christmas"];
   }
   $("seasonAwards").replaceChildren(
-    card("Points Machine", pm ? teamName(pm.id) : "TBD", pm ? "leads with " + fmt(pm.pf) + " points for" : "most total points across the regular season"),
-    card("Unluckiest", ul ? teamName(ul.id) : "TBD", ul ? fmt(ul.pa) + " points against so far" : "most points scored against you"),
-    card("Comeback Kid", ...comeback),
-    card("Iron Manager", ...set(sa.ironManager, "never an empty or injured player in the lineup")),
-    card("Trade of the Year", ...set(sa.tradeOfTheYear, "league vote at the end of the season")),
-    card("Steal of the Draft", ...set(sa.stealOfDraft, "most points per auction dollar, judged at the All-Star break")),
-    card("Wooden Spoon", ws ? teamName(ws.id) : "TBD", ws ? "currently last. The champion picks their team name for next season" : "last place picks up the forfeit"));
+    card("Points Machine", pm ? teamName(pm.id) : "TBD", pm ? "leads with " + fmt(pm.pf) + " points for" : "most total points across the regular season", false, "bolt"),
+    card("Unluckiest", ul ? teamName(ul.id) : "TBD", ul ? fmt(ul.pa) + " points against so far" : "most points scored against you", false, "rain"),
+    card("Comeback Kid", ...comeback, false, "rise"),
+    card("Iron Manager", ...set(sa.ironManager, "never an empty or injured player in the lineup"), false, "shield"),
+    card("Trade of the Year", ...set(sa.tradeOfTheYear, "league vote at the end of the season"), false, "swap"),
+    card("Steal of the Draft", ...set(sa.stealOfDraft, "most points per auction dollar, judged at the All-Star break"), false, "tag"),
+    card("Wooden Spoon", ws ? teamName(ws.id) : "TBD", ws ? "currently last. The champion picks their team name for next season" : "last place picks up the forfeit", false, "spoon"));
 
   /* Ledger */
   $("ledger").replaceChildren(table(["Team", "Buy-in", "Won"],
