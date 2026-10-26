@@ -34,6 +34,12 @@ h2{font-family:var(--display);font-size:24px;letter-spacing:.06em;text-transform
 .award.main.tbd .t{color:#0E1A2B;opacity:.75}
 .award .k{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 .award .t{font-size:20px;font-weight:600}
+.weekhead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.weekhead h2{margin:0}
+.picker{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px}
+.picker select{background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font:inherit;min-height:40px}
+.picker select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+td.lead{color:var(--gold);font-weight:700}
 .awards.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:760px){.awards.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.awards.three{grid-template-columns:1fr}}
@@ -76,7 +82,13 @@ h3{font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;m
   <section class="tiles" id="tiles"></section>
 
   <section>
-    <h2 id="weekTitle">This week</h2>
+    <div class="weekhead">
+      <h2 id="weekTitle">This week</h2>
+      <div class="picker" id="weekPickWrap" hidden>
+        <label for="weekPick">Show week</label>
+        <select id="weekPick"></select>
+      </div>
+    </div>
     <div id="thisWeek"></div>
   </section>
 
@@ -88,6 +100,13 @@ h3{font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;m
   <section>
     <h2>Weekly High Score · ₹150 a week</h2>
     <div class="tbl"><table><thead><tr><th>Week</th><th>Dates</th><th>Winner</th><th class="num">Points</th><th>Prize</th></tr></thead><tbody id="weekly"></tbody></table></div>
+  </section>
+
+  <section>
+    <h2>Award leaderboard</h2>
+    <div class="awards" id="leaders"></div>
+    <div id="tally" style="margin-top:14px"></div>
+    <p class="note">Running count of every award each team has won this season. Nail-biter counts for both teams in the matchup. Leaders are shown for ties too.</p>
   </section>
 
   <section>
@@ -125,6 +144,7 @@ h3{font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;m
 /* League data lives in data.json, updated after each scoring week. */
 let DATA = null;
 
+let selWeek = null;
 const $ = id => document.getElementById(id);
 const inr = n => "₹" + Number(n).toLocaleString("en-IN");
 const fmt = n => Number(n).toLocaleString("en-IN", {maximumFractionDigits:1});
@@ -149,6 +169,10 @@ const ICON_PATHS = {
   shield:'<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/>',
   swap:'<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
   tag:'<path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+  target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>',
+  card:'<rect x="7" y="3" width="10" height="15" rx="1.5" transform="rotate(12 12 10.5)"/><path d="M5 21h14"/>',
+  adduser:'<circle cx="10" cy="8" r="4"/><path d="M3 21a7 7 0 0 1 14 0M19 8v6M16 11h6"/>',
+  medal:'<circle cx="12" cy="15" r="6"/><path d="M8.5 3h7L13 10h-2L8.5 3z"/><path d="M12 12.5v5"/>',
   spoon:'<ellipse cx="12" cy="7" rx="4" ry="5"/><path d="M12 12v10"/>'
 };
 const icon = name => { const d = el("div", {class:"ic", "aria-hidden":"true"}); d.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + (ICON_PATHS[name] || "") + '</svg>'; return d; };
@@ -185,7 +209,12 @@ function render() {
   $("tiles").replaceChildren(...tiles.map(([v, l]) => el("div", {class:"tile"}, [el("div", {class:"v", text:v}), el("div", {class:"l", text:l})])));
 
   /* This week */
-  const last = DATA.weeks[DATA.weeks.length - 1];
+  const latest = DATA.weeks[DATA.weeks.length - 1];
+  const last = (selWeek && DATA.weeks.find(x => x.n === selWeek)) || latest;
+  const pick = $("weekPick");
+  $("weekPickWrap").hidden = DATA.weeks.length < 2;
+  pick.replaceChildren(...[...DATA.weeks].reverse().map(x => { const o = el("option", {value:String(x.n), text:"Week " + x.n + " · " + shortDate(x.start) + " – " + shortDate(x.end) + (x === latest ? " (latest)" : "")}); if (last && x.n === last.n) o.selected = true; return o; }));
+  pick.onchange = () => { selWeek = Number(pick.value); render(); };
   $("weekTitle").textContent = last ? "Week " + last.n + " · " + shortDate(last.start) + " – " + shortDate(last.end) : "Week 1 · 20 Oct – 25 Oct · results Monday 26 Oct";
   const w = last || {}, v = (a, f, fallback) => a ? [teamName(a.team), f(a)] : ["TBD", fallback];
   $("thisWeek").replaceChildren(el("div", {class:"awards three"}, [
@@ -196,6 +225,36 @@ function render() {
     card("Nail-biter", ...(w.nailbiter ? [w.nailbiter.teams.map(teamName).join(" vs "), "decided by " + fmt(w.nailbiter.margin) + " pts"] : ["TBD", "closest matchup of the week"]), false, "timer"),
     card("Bench Blunder", ...v(w.benchBlunder, a => fmt(a.pts) + " pts left on the bench", "most points left sitting on the bench"), false, "bench")
   ]));
+
+  /* Award leaderboard */
+  const AW = [
+    ["highScore", "High Scores", "trophy"], ["heartbreaker", "Heartbreakers", "heartbreak"], ["luckyEscape", "Lucky Escapes", "clover"],
+    ["blowout", "Blowouts", "crown"], ["nailbiter", "Nail-biters", "timer"], ["benchBlunder", "Bench Blunders", "bench"],
+    ["mvp", "Monthly MVPs", "medal"], ["tdHunter", "Triple-Double Hunter wins", "target"], ["badBoy", "Bad Boy Awards", "card"], ["waiverWizard", "Waiver Wizard wins", "adduser"]
+  ];
+  const cnt = {}; DATA.teams.forEach(t => { cnt[t.id] = {}; AW.forEach(([k]) => cnt[t.id][k] = 0); });
+  const bump = (id, k) => { if (id && cnt[id]) cnt[id][k]++; };
+  DATA.weeks.forEach(x => {
+    ["highScore", "heartbreaker", "luckyEscape", "blowout", "benchBlunder"].forEach(k => x[k] && bump(x[k].team, k));
+    if (x.nailbiter) x.nailbiter.teams.forEach(id => bump(id, "nailbiter"));
+  });
+  DATA.months.forEach(m => {
+    if (m.winner) bump(m.winner.team, "mvp");
+    ["tdHunter", "badBoy", "waiverWizard"].forEach(k => m.extras && m.extras[k] && bump(m.extras[k].team, k));
+  });
+  $("leaders").replaceChildren(...AW.map(([k, label, ic]) => {
+    const max = Math.max(0, ...Object.values(cnt).map(c => c[k]));
+    if (!max) return card("Most " + label, "TBD", "no winner yet", false, ic);
+    const who = Object.keys(cnt).filter(id => cnt[id][k] === max).map(teamName);
+    return card("Most " + label, who.join(", "), max + (max === 1 ? " time" : " times"), false, ic);
+  }));
+  const tallied = Object.keys(cnt).map(id => ({id, total: AW.reduce((a, [k]) => a + cnt[id][k], 0)})).sort((a, b) => b.total - a.total);
+  const maxOf = k => Math.max(0, ...Object.values(cnt).map(c => c[k]));
+  $("tally").replaceChildren(el("div", {class:"tbl"}, [el("table", {}, [
+    el("thead", {}, [el("tr", {}, [el("th", {text:"Team"}), ...AW.map(([k]) => el("th", {class:"num", text:({highScore:"High",heartbreaker:"Heartbr.",luckyEscape:"Lucky",blowout:"Blowout",nailbiter:"Nail-biter",benchBlunder:"Bench",mvp:"MVP",tdHunter:"TD Hunter",badBoy:"Bad Boy",waiverWizard:"Waiver"})[k]})), el("th", {class:"num", text:"Total"})])]),
+    el("tbody", {}, tallied.map(({id, total}) => el("tr", {}, [el("td", {text:teamName(id)}),
+      ...AW.map(([k]) => el("td", {class:"num" + (cnt[id][k] && cnt[id][k] === maxOf(k) ? " lead" : ""), text:String(cnt[id][k] || "·")})),
+      el("td", {class:"num", text:String(total)})])))])]));
 
   /* Standings */
   $("standings").replaceChildren(table(["#", "Team", "W-L-T", "Points for", "Points against"],
