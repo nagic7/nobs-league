@@ -106,7 +106,7 @@ h3{font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;m
     <h2>Award leaderboard</h2>
     <div class="awards" id="leaders"></div>
     <div id="tally" style="margin-top:14px"></div>
-    <p class="note">Running count of every award each team has won this season. Nail-biter counts for both teams in the matchup. Leaders are shown for ties too.</p>
+    <p class="note">Running count of every award each team has won this season. Nail-biter counts for both teams in the matchup. Bench Blunder counts the points a bench player scored above the lowest active scorer that day. Leaders are shown for ties too.</p>
   </section>
 
   <section>
@@ -223,7 +223,7 @@ function render() {
     card("Lucky Escape", ...v(w.luckyEscape, a => "won with " + fmt(a.pts) + " pts", "lowest score that still won"), false, "clover"),
     card("Blowout King", ...v(w.blowout, a => "won by " + fmt(a.margin) + " pts", "biggest winning margin"), false, "crown"),
     card("Nail-biter", ...(w.nailbiter ? [w.nailbiter.teams.map(teamName).join(" vs "), "decided by " + fmt(w.nailbiter.margin) + " pts"] : ["TBD", "closest matchup of the week"]), false, "timer"),
-    card("Bench Blunder", ...v(w.benchBlunder, a => fmt(a.pts) + " pts left on the bench", "most points left sitting on the bench"), false, "bench")
+    card("Bench Blunder", ...v(w.benchBlunder, a => fmt(a.pts) + " pts lost to bench choices", "most points lost by benching a better scorer"), false, "bench")
   ]));
 
   /* Award leaderboard */
