@@ -125,20 +125,20 @@
    },
    "prizePaid": true,
    "bench": {
-    "yessae": 77,
+    "yessae": 74,
+    "anirudh1525": 70,
+    "nagic89": 31,
+    "daddygiannis": 21,
+    "process0910": 19,
+    "tarunsajnani": 15,
+    "mohit_khatri": 13,
     "akhil24": 0,
-    "anirudh1525": 108,
     "addy77": 0,
-    "daddygiannis": 60,
-    "mohit_khatri": 25,
-    "mannan7": 0,
-    "nagic89": 43,
-    "process0910": 20,
-    "tarunsajnani": 15
+    "mannan7": 0
    },
    "benchBlunder": {
-    "team": "anirudh1525",
-    "pts": 108
+    "team": "yessae",
+    "pts": 74
    }
   }
  ],
