@@ -209,7 +209,7 @@
     ],
     "margin": 20
    },
-   "prizePaid": false,
+   "prizePaid": true,
    "bench": {
     "tarunsajnani": 119,
     "daddygiannis": 59,
