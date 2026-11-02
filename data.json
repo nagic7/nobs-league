@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27",
+ "updated": "2026-11-02",
  "buyInsPaid": 10,
  "buyIn": 1500,
  "pool": 15000,
@@ -65,28 +65,28 @@
    "end": "2026-10-25",
    "month": "2026-11",
    "scores": {
-    "process0910": 1234,
-    "yessae": 977,
+    "process0910": 1233,
+    "yessae": 976,
     "mannan7": 1102,
     "nagic89": 1054,
-    "akhil24": 1172,
-    "anirudh1525": 1173,
+    "akhil24": 1169,
+    "anirudh1525": 1175,
     "daddygiannis": 1059,
-    "tarunsajnani": 875,
-    "addy77": 995,
-    "mohit_khatri": 964
+    "tarunsajnani": 873,
+    "addy77": 997,
+    "mohit_khatri": 966
    },
    "against": {
-    "process0910": 977,
-    "yessae": 1234,
+    "process0910": 976,
+    "yessae": 1233,
     "mannan7": 1054,
     "nagic89": 1102,
-    "akhil24": 1173,
-    "anirudh1525": 1172,
-    "daddygiannis": 875,
+    "akhil24": 1175,
+    "anirudh1525": 1169,
+    "daddygiannis": 873,
     "tarunsajnani": 1059,
-    "addy77": 964,
-    "mohit_khatri": 995
+    "addy77": 966,
+    "mohit_khatri": 997
    },
    "results": {
     "process0910": "W",
@@ -102,15 +102,15 @@
    },
    "highScore": {
     "team": "process0910",
-    "pts": 1234
+    "pts": 1233
    },
    "heartbreaker": {
     "team": "akhil24",
-    "pts": 1172
+    "pts": 1169
    },
    "luckyEscape": {
     "team": "addy77",
-    "pts": 995
+    "pts": 997
    },
    "blowout": {
     "team": "process0910",
@@ -121,14 +121,14 @@
      "akhil24",
      "anirudh1525"
     ],
-    "margin": 1
+    "margin": 6
    },
    "prizePaid": true,
    "bench": {
     "yessae": 74,
     "anirudh1525": 70,
     "nagic89": 31,
-    "daddygiannis": 21,
+    "daddygiannis": 19,
     "process0910": 19,
     "tarunsajnani": 15,
     "mohit_khatri": 13,
@@ -141,8 +141,92 @@
     "pts": 74
    },
    "corrections": [
-    "Oct 25 stat corrections: Anirudh1525 +2 (1,171 → 1,173), yessae −3 (980 → 977)"
+    "Oct 25 stat corrections: Anirudh1525 +2 (1,171 → 1,173), yessae −3 (980 → 977)",
+    "Nov 2: further Fantrax stat corrections applied — Process0910 1,233, yessae 976, Akhil24 1,169, Anirudh1525 1,175, tarunsajnani 873, Addy77 997, Mohit_Khatri 966; Nail-biter margin now 6; DaddyGiannis bench 19. All award winners unchanged."
    ]
+  },
+  {
+   "n": 2,
+   "start": "2026-10-26",
+   "end": "2026-11-01",
+   "month": "2026-11",
+   "scores": {
+    "yessae": 1106,
+    "mannan7": 1443,
+    "process0910": 1229,
+    "akhil24": 1093,
+    "nagic89": 1438,
+    "tarunsajnani": 728,
+    "anirudh1525": 1361,
+    "addy77": 1150,
+    "daddygiannis": 1383,
+    "mohit_khatri": 1363
+   },
+   "against": {
+    "yessae": 1443,
+    "mannan7": 1106,
+    "process0910": 1093,
+    "akhil24": 1229,
+    "nagic89": 728,
+    "tarunsajnani": 1438,
+    "anirudh1525": 1150,
+    "addy77": 1361,
+    "daddygiannis": 1363,
+    "mohit_khatri": 1383
+   },
+   "results": {
+    "yessae": "L",
+    "mannan7": "W",
+    "process0910": "W",
+    "akhil24": "L",
+    "nagic89": "W",
+    "tarunsajnani": "L",
+    "anirudh1525": "W",
+    "addy77": "L",
+    "daddygiannis": "W",
+    "mohit_khatri": "L"
+   },
+   "highScore": {
+    "team": "mannan7",
+    "pts": 1443
+   },
+   "heartbreaker": {
+    "team": "mohit_khatri",
+    "pts": 1363
+   },
+   "luckyEscape": {
+    "team": "process0910",
+    "pts": 1229
+   },
+   "blowout": {
+    "team": "nagic89",
+    "margin": 710
+   },
+   "nailbiter": {
+    "teams": [
+     "daddygiannis",
+     "mohit_khatri"
+    ],
+    "margin": 20
+   },
+   "prizePaid": false,
+   "bench": {
+    "tarunsajnani": 119,
+    "daddygiannis": 59,
+    "akhil24": 40,
+    "yessae": 22,
+    "mohit_khatri": 10,
+    "addy77": 7,
+    "anirudh1525": 0,
+    "mannan7": 0,
+    "nagic89": 0,
+    "process0910": 0
+   },
+   "benchBlunder": {
+    "team": "tarunsajnani",
+    "pts": 119
+   },
+   "playerDailyFile": "players-w2.json"
   }
  ],
  "months": [

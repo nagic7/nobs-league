@@ -1,0 +1,793 @@
+{
+ "yessae": {
+  "10-26": {
+   "A": {
+    "tyrese-haliburton": 48,
+    "cameron-boozer": 24,
+    "donovan-mitchell": 50,
+    "naz-reid": 25
+   },
+   "B": {}
+  },
+  "10-27": {
+   "A": {
+    "paul-reed": 47,
+    "john-collins": 19,
+    "walker-kessler": 24,
+    "darius-acuff": 23
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "donovan-mitchell": 38,
+    "naz-reid": 13,
+    "paul-reed": 31,
+    "rj-barrett": 48,
+    "walker-kessler": 31,
+    "franz-wagner": 21
+   },
+   "B": {}
+  },
+  "10-29": {
+   "A": {
+    "cameron-boozer": 59,
+    "donovan-mitchell": 27,
+    "darius-acuff": 61
+   },
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "anthony-black": 48,
+    "naz-reid": 21,
+    "paul-reed": 18,
+    "john-collins": 12,
+    "rj-barrett": 10,
+    "walker-kessler": 48,
+    "franz-wagner": 49,
+    "quentin-grimes": 6
+   },
+   "B": {}
+  },
+  "10-31": {
+   "A": {
+    "cameron-boozer": 43,
+    "donovan-mitchell": 22,
+    "naz-reid": 17,
+    "lauri-markkanen": 16,
+    "darius-acuff": 46
+   },
+   "B": {}
+  },
+  "11-01": {
+   "A": {
+    "anthony-black": 36,
+    "rj-barrett": 40,
+    "walker-kessler": 54,
+    "franz-wagner": 31
+   },
+   "B": {
+    "payton-pritchard": 22
+   }
+  }
+ },
+ "Akhil24": {
+  "10-26": {
+   "A": {
+    "kyle-kuzma": 28,
+    "deandre-ayton": 8,
+    "rudy-gobert": 28,
+    "jamal-murray": 50,
+    "jaren-jackson": 10,
+    "pj-washington": 38,
+    "kevin-durant": 43,
+    "aaron-gordon": 2
+   },
+   "B": {}
+  },
+  "10-27": {
+   "A": {
+    "deaaron-fox": 21,
+    "zach-lavine": 28,
+    "stephon-castle": 26,
+    "luka-doncic": 62
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "deaaron-fox": 29,
+    "kyle-kuzma": 13,
+    "jamal-murray": 38,
+    "brook-lopez": 6,
+    "vj-edgecombe": 11,
+    "stephon-castle": 43,
+    "pj-washington": 28,
+    "kevin-durant": 38,
+    "aaron-gordon": 32
+   },
+   "B": {
+    "rudy-gobert": 2
+   }
+  },
+  "10-29": {
+   "A": {
+    "zach-lavine": 38
+   },
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "jamal-murray": 59,
+    "brook-lopez": 18,
+    "vj-edgecombe": 26,
+    "pj-washington": 9,
+    "kevin-durant": 25,
+    "luka-doncic": 53,
+    "aaron-gordon": 26
+   },
+   "B": {
+    "rudy-gobert": 38
+   }
+  },
+  "10-31": {
+   "A": {
+    "deaaron-fox": 48,
+    "kyle-kuzma": 24,
+    "toumani-camara": 20,
+    "vj-edgecombe": 25,
+    "zach-lavine": 7,
+    "stephon-castle": 7,
+    "kevin-durant": 35
+   },
+   "B": {}
+  },
+  "11-01": {
+   "A": {
+    "brook-lopez": 9,
+    "luka-doncic": 82
+   },
+   "B": {}
+  }
+ },
+ "Anirudh1525": {
+  "10-26": {
+   "A": {
+    "matas-buzelis": 15,
+    "jayson-tatum": 35,
+    "payton-pritchard": 46,
+    "nickeil-alexander-walker": 12,
+    "amen-thompson": 25,
+    "ty-jerome": 23,
+    "dyson-daniels": 10,
+    "cedric-coward": 33
+   },
+   "B": {}
+  },
+  "10-27": {
+   "A": {
+    "jayson-tatum": 58,
+    "devin-vassell": 34,
+    "payton-pritchard": 16,
+    "donovan-clingan": 23,
+    "domantas-sabonis": 59
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "anthony-black": 9,
+    "collin-murray-boyles": 8,
+    "darius-garland": 18,
+    "devin-vassell": 38,
+    "desmond-bane": 26,
+    "trey-murphy": 10,
+    "nickeil-alexander-walker": 24,
+    "amen-thompson": 37,
+    "immanuel-quickley": 34,
+    "dyson-daniels": 35
+   },
+   "B": {}
+  },
+  "10-29": {
+   "A": {
+    "peyton-watson": 6,
+    "trey-murphy": 30,
+    "nickeil-alexander-walker": 32,
+    "donovan-clingan": 37,
+    "precious-achiuwa": 51,
+    "domantas-sabonis": 38,
+    "ty-jerome": 15,
+    "dyson-daniels": 20
+   },
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "jayson-tatum": 33,
+    "darius-garland": 32,
+    "desmond-bane": 33,
+    "miles-bridges": 52,
+    "amen-thompson": 34,
+    "immanuel-quickley": 36
+   },
+   "B": {}
+  },
+  "10-31": {
+   "A": {
+    "trey-murphy": 31,
+    "nickeil-alexander-walker": 11,
+    "donovan-clingan": 15,
+    "amen-thompson": 16,
+    "precious-achiuwa": 14,
+    "domantas-sabonis": 45,
+    "dyson-daniels": 25
+   },
+   "B": {}
+  },
+  "11-01": {
+   "A": {
+    "jayson-tatum": 49,
+    "darius-garland": 24,
+    "desmond-bane": 27,
+    "immanuel-quickley": 27
+   },
+   "B": {}
+  }
+ },
+ "Addy77": {
+  "10-26": {
+   "A": {
+    "isaiah-hartenstein": 45,
+    "kelly-oubre-jr": 14,
+    "neemias-queta": 22,
+    "fred-vanvleet": 14,
+    "ajay-mitchell": 44,
+    "anthony-davis": 42,
+    "draymond-green": 16,
+    "nikola-jokic": 59
+   },
+   "B": {}
+  },
+  "10-27": {
+   "A": {
+    "josh-hart": 30,
+    "neemias-queta": 10,
+    "dylan-harper": 41,
+    "ausar-thompson": 20
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "josh-hart": 16,
+    "isaiah-hartenstein": 35,
+    "fred-vanvleet": 44,
+    "ajay-mitchell": 49,
+    "dylan-harper": 25,
+    "anthony-davis": 35,
+    "jaylen-brown": 40,
+    "nikola-jokic": 55,
+    "ausar-thompson": 32,
+    "lebron-james": 43
+   },
+   "B": {
+    "kelly-oubre-jr": 21,
+    "draymond-green": 23
+   }
+  },
+  "10-29": {
+   "A": {},
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "josh-hart": 13,
+    "neemias-queta": 23,
+    "fred-vanvleet": 26,
+    "anthony-davis": 48,
+    "draymond-green": 35,
+    "alex-sarr": 6,
+    "nikola-jokic": 56,
+    "ausar-thompson": 38,
+    "lebron-james": 49
+   },
+   "B": {}
+  },
+  "10-31": {
+   "A": {
+    "isaiah-hartenstein": 20,
+    "ajay-mitchell": 15,
+    "dylan-harper": 44,
+    "jaylen-brown": 25
+   },
+   "B": {}
+  },
+  "11-01": {
+   "A": {
+    "neemias-queta": 21
+   },
+   "B": {}
+  }
+ },
+ "DaddyGiannis": {
+  "10-26": {
+   "A": {
+    "jalen-johnson": 31,
+    "alperen-sengun": 78,
+    "ayo-dosunmu": 10,
+    "james-harden": 39,
+    "alex-caruso": 19,
+    "keyonte-george": 36,
+    "ace-bailey": 47,
+    "bam-adebayo": 30,
+    "jalen-smith": 8,
+    "giannis-antetokounmpo": 67
+   },
+   "B": {
+    "grayson-allen": 15,
+    "ryan-rollins": 24
+   }
+  },
+  "10-27": {
+   "A": {
+    "daniss-jenkins": 13
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "jakobe-walter": 25,
+    "jalen-johnson": 37,
+    "james-harden": 22,
+    "ayo-dosunmu": 35,
+    "terrence-shannon": 22,
+    "keyonte-george": 29,
+    "ace-bailey": 25,
+    "bam-adebayo": 47,
+    "tari-eason": 21,
+    "giannis-antetokounmpo": 59
+   },
+   "B": {
+    "ryan-rollins": 10
+   }
+  },
+  "10-29": {
+   "A": {
+    "jalen-johnson": 32,
+    "jrue-holiday": 19,
+    "james-harden": 28
+   },
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "jakobe-walter": 14,
+    "derrick-jones": 17,
+    "ayo-dosunmu": 27,
+    "terrence-shannon": 14,
+    "daniel-gafford": 37,
+    "dennis-schroder": 23,
+    "bam-adebayo": 58,
+    "jalen-smith": 17,
+    "tari-eason": 34,
+    "giannis-antetokounmpo": 83
+   },
+   "B": {}
+  },
+  "10-31": {
+   "A": {
+    "jalen-johnson": 23,
+    "jrue-holiday": 27,
+    "ayo-dosunmu": 52,
+    "terrence-shannon": 5,
+    "dennis-schroder": 6,
+    "keyonte-george": 10,
+    "ace-bailey": 26,
+    "tari-eason": 20
+   },
+   "B": {
+    "alperen-sengun": 38
+   }
+  },
+  "11-01": {
+   "A": {
+    "jakobe-walter": 18,
+    "moritz-wagner": 23,
+    "derrick-jones": 12,
+    "quenton-jackson": 18,
+    "deanthony-melton": 40
+   },
+   "B": {}
+  }
+ },
+ "Mohit_Khatri": {
+  "10-26": {
+   "A": {
+    "jabari-smith": 42,
+    "myles-turner": 34,
+    "stephen-curry": 44,
+    "onyeka-okongwu": 33,
+    "jerami-grant": 20,
+    "lamelo-ball": 12,
+    "demar-derozan": 35
+   },
+   "B": {}
+  },
+  "10-27": {
+   "A": {
+    "jalen-brunson": 27,
+    "ja-morant": 32,
+    "deni-avdija": 41,
+    "victor-wembanyama": 77
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "jabari-smith": 20,
+    "stephen-curry": 65,
+    "onyeka-okongwu": 21,
+    "jalen-brunson": 55,
+    "lamelo-ball": 14,
+    "joel-embiid": 38,
+    "victor-wembanyama": 79,
+    "derik-queen": 21,
+    "demar-derozan": 17
+   },
+   "B": {
+    "myles-turner": 10
+   }
+  },
+  "10-29": {
+   "A": {
+    "onyeka-okongwu": 58,
+    "jerami-grant": 4,
+    "ja-morant": 19,
+    "deni-avdija": 46,
+    "derik-queen": 18
+   },
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "jabari-smith": 26,
+    "stephen-curry": 51,
+    "jalen-brunson": 37,
+    "sandro-mamukelashvili": 14,
+    "lamelo-ball": 44,
+    "joel-embiid": 27,
+    "demar-derozan": 14
+   },
+   "B": {}
+  },
+  "10-31": {
+   "A": {
+    "jabari-smith": 52,
+    "myles-turner": 29,
+    "onyeka-okongwu": 14,
+    "jerami-grant": 17,
+    "lamelo-ball": 21,
+    "deni-avdija": 28,
+    "victor-wembanyama": 75,
+    "derik-queen": 26
+   },
+   "B": {}
+  },
+  "11-01": {
+   "A": {
+    "sandro-mamukelashvili": 16
+   },
+   "B": {}
+  }
+ },
+ "Mannan7": {
+  "10-26": {
+   "A": {
+    "anthony-edwards": 67,
+    "pascal-siakam": 44,
+    "derrick-white": 27,
+    "aaron-wiggins": 20,
+    "brandon-miller": 61,
+    "evan-mobley": 39,
+    "jaden-mcdaniels": 23,
+    "trae-young": 47,
+    "davion-mitchell": 30
+   },
+   "B": {}
+  },
+  "10-27": {
+   "A": {
+    "derrick-white": 30,
+    "julius-randle": 34
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "pascal-siakam": 45,
+    "scottie-barnes": 59,
+    "brandon-miller": 49,
+    "evan-mobley": 45,
+    "jaden-mcdaniels": 26,
+    "trae-young": 24,
+    "mo-bamba": 18,
+    "kris-dunn": 12,
+    "davion-mitchell": 34
+   },
+   "B": {}
+  },
+  "10-29": {
+   "A": {
+    "toumani-camara": 26,
+    "evan-mobley": 30
+   },
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "pascal-siakam": 21,
+    "scottie-barnes": 57,
+    "derrick-white": 26,
+    "brandon-miller": 25,
+    "julius-randle": 18,
+    "jaden-mcdaniels": 56,
+    "trae-young": 49,
+    "kris-dunn": 19,
+    "davion-mitchell": 41,
+    "zaccharie-risacher": 32
+   },
+   "B": {}
+  },
+  "10-31": {
+   "A": {
+    "jaxson-hayes": 20,
+    "brandon-miller": 37,
+    "evan-mobley": 47,
+    "jaden-mcdaniels": 26,
+    "jeremiah-fears": 42
+   },
+   "B": {}
+  },
+  "11-01": {
+   "A": {
+    "isaiah-jackson": 12,
+    "pascal-siakam": 28,
+    "scottie-barnes": 42,
+    "derrick-white": 24,
+    "julius-randle": 31
+   },
+   "B": {}
+  }
+ },
+ "nagic89": {
+  "10-26": {
+   "A": {
+    "josh-giddey": 24,
+    "zach-edey": 9,
+    "paul-george": 16,
+    "cooper-flagg": 77,
+    "jarrett-allen": 32,
+    "yaxel-lendeborg": 58,
+    "tyler-herro": 48,
+    "moussa-diabate": 57
+   },
+   "B": {}
+  },
+  "10-27": {
+   "A": {
+    "og-anunoby": 29,
+    "cade-cunningham": 39,
+    "paul-george": 42,
+    "precious-achiuwa": 1
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "josh-giddey": 41,
+    "aj-dybantsa": 24,
+    "og-anunoby": 25,
+    "cade-cunningham": 49,
+    "cooper-flagg": 44,
+    "jarrett-allen": 38,
+    "yaxel-lendeborg": 36,
+    "tyler-herro": 32,
+    "moussa-diabate": 23,
+    "andrew-nembhard": 40
+   },
+   "B": {}
+  },
+  "10-29": {
+   "A": {
+    "zach-edey": 21,
+    "jarrett-allen": 32
+   },
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "josh-giddey": 22,
+    "aj-dybantsa": 25,
+    "og-anunoby": 18,
+    "cade-cunningham": 27,
+    "paul-george": 46,
+    "cooper-flagg": 63,
+    "yaxel-lendeborg": -3,
+    "moussa-diabate": 34,
+    "andrew-nembhard": 38,
+    "norman-powell": 17
+   },
+   "B": {}
+  },
+  "10-31": {
+   "A": {
+    "devin-vassell": 22,
+    "aaron-wiggins": 13,
+    "jarrett-allen": 55,
+    "tyler-herro": 17,
+    "moussa-diabate": 32
+   },
+   "B": {}
+  },
+  "11-01": {
+   "A": {
+    "paul-george": 46,
+    "yaxel-lendeborg": 62,
+    "andrew-nembhard": 22,
+    "kris-dunn": 45
+   },
+   "B": {}
+  }
+ },
+ "Process0910": {
+  "10-26": {
+   "A": {
+    "jonathan-kuminga": 27,
+    "caleb-wilson": 26,
+    "cj-mccollum": 36,
+    "dennis-schroder": 14,
+    "devin-booker": 12,
+    "kelel-ware": 39,
+    "brandin-podziemski": 40
+   },
+   "B": {}
+  },
+  "10-27": {
+   "A": {
+    "karl-anthony-towns": 55,
+    "michael-porter": 46,
+    "austin-reaves": 42,
+    "duncan-robinson": 13
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "karl-anthony-towns": 42,
+    "austin-reaves": 15,
+    "jonathan-kuminga": 35,
+    "tyrese-maxey": 34,
+    "caleb-wilson": 36,
+    "cj-mccollum": 17,
+    "wendell-carter": 19,
+    "dejounte-murray": 26,
+    "kelel-ware": 13,
+    "brandin-podziemski": 15
+   },
+   "B": {}
+  },
+  "10-29": {
+   "A": {
+    "cj-mccollum": 18,
+    "cedric-coward": 36
+   },
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "karl-anthony-towns": 44,
+    "michael-porter": 21,
+    "austin-reaves": 30,
+    "jonathan-kuminga": 7,
+    "tyrese-maxey": 41,
+    "caleb-wilson": 35,
+    "wendell-carter": 34,
+    "devin-booker": 23,
+    "brandin-podziemski": 45
+   },
+   "B": {}
+  },
+  "10-31": {
+   "A": {
+    "jonathan-kuminga": 31,
+    "tyrese-maxey": 56,
+    "james-harden": 35,
+    "kelel-ware": 39,
+    "cedric-coward": 24
+   },
+   "B": {}
+  },
+  "11-01": {
+   "A": {
+    "michael-porter": 30,
+    "austin-reaves": 22,
+    "wendell-carter": 15,
+    "brandin-podziemski": 41
+   },
+   "B": {}
+  }
+ },
+ "tarunsajnani": {
+  "10-26": {
+   "A": {
+    "shai-gilgeous-alexander": 36,
+    "kyrie-irving": 40,
+    "jaime-jaquez": 15,
+    "kyshawn-george": 25
+   },
+   "B": {
+    "jalen-green": 36
+   }
+  },
+  "10-27": {
+   "A": {
+    "damian-lillard": 25,
+    "mikal-bridges": 24,
+    "dayron-sharpe": 13
+   },
+   "B": {}
+  },
+  "10-28": {
+   "A": {
+    "mikal-bridges": -1,
+    "shai-gilgeous-alexander": 27,
+    "kyrie-irving": 31,
+    "jaime-jaquez": 31,
+    "kyshawn-george": 31
+   },
+   "B": {
+    "saddiq-bey": 17,
+    "zion-williamson": 45
+   }
+  },
+  "10-29": {
+   "A": {
+    "damian-lillard": 5,
+    "saddiq-bey": 21,
+    "zion-williamson": 54,
+    "scoot-henderson": 8
+   },
+   "B": {}
+  },
+  "10-30": {
+   "A": {
+    "mikal-bridges": 31,
+    "dayron-sharpe": 19,
+    "kyrie-irving": 59
+   },
+   "B": {
+    "jalen-green": 2,
+    "kyshawn-george": 18
+   }
+  },
+  "10-31": {
+   "A": {
+    "damian-lillard": 33,
+    "saddiq-bey": 47,
+    "shai-gilgeous-alexander": 36,
+    "zion-williamson": 36,
+    "scoot-henderson": 21,
+    "jaime-jaquez": 20
+   },
+   "B": {}
+  },
+  "11-01": {
+   "A": {
+    "dayron-sharpe": 41
+   },
+   "B": {}
+  }
+ }
+}
