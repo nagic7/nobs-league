@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-09",
  "buyInsPaid": 10,
  "buyIn": 1500,
  "pool": 15000,
@@ -227,6 +227,101 @@
     "pts": 119
    },
    "playerDailyFile": "players-w2.json"
+  },
+  {
+   "n": 3,
+   "start": "2026-11-02",
+   "end": "2026-11-08",
+   "month": "2026-11",
+   "scores": {
+    "akhil24": 1143,
+    "yessae": 1151,
+    "tarunsajnani": 982,
+    "mannan7": 1119,
+    "addy77": 1358,
+    "process0910": 1350,
+    "mohit_khatri": 1467,
+    "nagic89": 1164,
+    "daddygiannis": 1456,
+    "anirudh1525": 1424
+   },
+   "against": {
+    "akhil24": 1151,
+    "yessae": 1143,
+    "tarunsajnani": 1119,
+    "mannan7": 982,
+    "addy77": 1350,
+    "process0910": 1358,
+    "mohit_khatri": 1164,
+    "nagic89": 1467,
+    "daddygiannis": 1424,
+    "anirudh1525": 1456
+   },
+   "results": {
+    "akhil24": "L",
+    "yessae": "W",
+    "tarunsajnani": "L",
+    "mannan7": "W",
+    "addy77": "W",
+    "process0910": "L",
+    "mohit_khatri": "W",
+    "nagic89": "L",
+    "daddygiannis": "W",
+    "anirudh1525": "L"
+   },
+   "highScore": {
+    "team": "mohit_khatri",
+    "pts": 1467
+   },
+   "heartbreaker": {
+    "team": "anirudh1525",
+    "pts": 1424
+   },
+   "luckyEscape": {
+    "team": "mannan7",
+    "pts": 1119
+   },
+   "blowout": {
+    "team": "mohit_khatri",
+    "margin": 303
+   },
+   "nailbiter": {
+    "teams": [
+     "yessae",
+     "akhil24",
+     "addy77",
+     "process0910"
+    ],
+    "pairs": [
+     [
+      "yessae",
+      "akhil24"
+     ],
+     [
+      "addy77",
+      "process0910"
+     ]
+    ],
+    "margin": 8
+   },
+   "prizePaid": false,
+   "bench": {
+    "tarunsajnani": 273,
+    "yessae": 144,
+    "mannan7": 117,
+    "daddygiannis": 91,
+    "nagic89": 89,
+    "anirudh1525": 76,
+    "akhil24": 64,
+    "addy77": 46,
+    "process0910": 38,
+    "mohit_khatri": 27
+   },
+   "benchBlunder": {
+    "team": "tarunsajnani",
+    "pts": 273
+   },
+   "playerDailyFile": "players-w3.json"
   }
  ],
  "months": [

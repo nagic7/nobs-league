@@ -106,7 +106,7 @@ h3{font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;m
     <h2>Award leaderboard</h2>
     <div class="awards" id="leaders"></div>
     <div id="tally" style="margin-top:14px"></div>
-    <p class="note">Running count of every award each team has won this season. Nail-biter counts for both teams in the matchup. Bench Blunder counts the points a bench player scored above the lowest active scorer that day. Leaders are shown for ties too.</p>
+    <p class="note">Running count of every award each team has won this season. Nail-biter counts for both teams in the matchup (and for every team when matchups tie for closest). Bench Blunder counts the points a bench player scored above the lowest active scorer that day. Leaders are shown for ties too.</p>
   </section>
 
   <section>
@@ -176,6 +176,7 @@ const ICON_PATHS = {
   spoon:'<ellipse cx="12" cy="7" rx="4" ry="5"/><path d="M12 12v10"/>'
 };
 const icon = name => { const d = el("div", {class:"ic", "aria-hidden":"true"}); d.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + (ICON_PATHS[name] || "") + '</svg>'; return d; };
+const nbText = nb => nb.pairs ? nb.pairs.map(p => p.map(teamName).join(" vs ")).join(" · ") : nb.teams.map(teamName).join(" vs ");
 const card = (k, t, d, main, ic) => el("div", {class:"award" + (main ? " main" : "") + (t === "TBD" ? " tbd" : "")}, [icon(ic), el("div", {class:"k", text:k}), el("div", {class:"t", text:t}), el("div", {class:"d", text:d})]);
 
 function standings() {
@@ -222,7 +223,7 @@ function render() {
     card("Heartbreaker", ...v(w.heartbreaker, a => fmt(a.pts) + " pts and still lost", "highest score that still lost"), false, "heartbreak"),
     card("Lucky Escape", ...v(w.luckyEscape, a => "won with " + fmt(a.pts) + " pts", "lowest score that still won"), false, "clover"),
     card("Blowout King", ...v(w.blowout, a => "won by " + fmt(a.margin) + " pts", "biggest winning margin"), false, "crown"),
-    card("Nail-biter", ...(w.nailbiter ? [w.nailbiter.teams.map(teamName).join(" vs "), "decided by " + fmt(w.nailbiter.margin) + " pts"] : ["TBD", "closest matchup of the week"]), false, "timer"),
+    card("Nail-biter", ...(w.nailbiter ? [nbText(w.nailbiter), "decided by " + fmt(w.nailbiter.margin) + " pts"] : ["TBD", "closest matchup of the week"]), false, "timer"),
     card("Bench Blunder", ...v(w.benchBlunder, a => fmt(a.pts) + " pts lost to bench choices", "most points lost by benching a better scorer"), false, "bench")
   ]));
 
@@ -274,7 +275,7 @@ function render() {
   const nm = a => a ? teamName(a.team) : "—";
   $("weeklyAwards").replaceChildren(played
     ? table(["Week", "Heartbreaker", "Lucky Escape", "Blowout King", "Nail-biter", "Bench Blunder"],
-        [...DATA.weeks].reverse().map(w => ["Week " + w.n, nm(w.heartbreaker), nm(w.luckyEscape), nm(w.blowout), w.nailbiter ? w.nailbiter.teams.map(teamName).join(" vs ") : "—", nm(w.benchBlunder)]))
+        [...DATA.weeks].reverse().map(w => ["Week " + w.n, nm(w.heartbreaker), nm(w.luckyEscape), nm(w.blowout), w.nailbiter ? nbText(w.nailbiter) : "—", nm(w.benchBlunder)]))
     : empty("Each week's Heartbreaker, Lucky Escape, Blowout King, Nail-biter and Bench Blunder are listed here, newest first."));
 
   /* Monthly MVP */
