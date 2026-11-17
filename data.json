@@ -378,7 +378,7 @@
     ],
     "margin": 45
    },
-   "prizePaid": false,
+   "prizePaid": true,
    "bench": {
     "yessae": 151,
     "tarunsajnani": 39,
