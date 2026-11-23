@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17",
+ "updated": "2026-11-23",
  "buyInsPaid": 10,
  "buyIn": 1500,
  "pool": 15000,
@@ -328,7 +328,7 @@
     "mohit_khatri": 1272,
     "process0910": 1558,
     "daddygiannis": 1443,
-    "nagic89": 1406,
+    "nagic89": 1408,
     "anirudh1525": 1284
    },
    "against": {
@@ -341,7 +341,7 @@
     "process0910": 1443,
     "daddygiannis": 1558,
     "nagic89": 1284,
-    "anirudh1525": 1406
+    "anirudh1525": 1408
    },
    "results": {
     "yessae": "W",
@@ -395,7 +395,93 @@
     "team": "yessae",
     "pts": 151
    },
-   "playerDailyFile": "players-w4.json"
+   "playerDailyFile": "players-w4.json",
+   "corrections": [
+    "Nov 23: Fantrax stat correction — nagic89 1,406 → 1,408. No award changes."
+   ]
+  },
+  {
+   "n": 5,
+   "start": "2026-11-16",
+   "end": "2026-11-22",
+   "month": "2026-11",
+   "scores": {
+    "nagic89": 1334,
+    "process0910": 1365,
+    "addy77": 1348,
+    "yessae": 1009,
+    "anirudh1525": 1278,
+    "mannan7": 1321,
+    "daddygiannis": 1380,
+    "akhil24": 1327,
+    "mohit_khatri": 1156,
+    "tarunsajnani": 887
+   },
+   "against": {
+    "nagic89": 1365,
+    "process0910": 1334,
+    "addy77": 1009,
+    "yessae": 1348,
+    "anirudh1525": 1321,
+    "mannan7": 1278,
+    "daddygiannis": 1327,
+    "akhil24": 1380,
+    "mohit_khatri": 887,
+    "tarunsajnani": 1156
+   },
+   "results": {
+    "nagic89": "L",
+    "process0910": "W",
+    "addy77": "W",
+    "yessae": "L",
+    "anirudh1525": "L",
+    "mannan7": "W",
+    "daddygiannis": "W",
+    "akhil24": "L",
+    "mohit_khatri": "W",
+    "tarunsajnani": "L"
+   },
+   "highScore": {
+    "team": "daddygiannis",
+    "pts": 1380
+   },
+   "heartbreaker": {
+    "team": "nagic89",
+    "pts": 1334
+   },
+   "luckyEscape": {
+    "team": "mohit_khatri",
+    "pts": 1156
+   },
+   "blowout": {
+    "team": "addy77",
+    "margin": 339
+   },
+   "nailbiter": {
+    "teams": [
+     "process0910",
+     "nagic89"
+    ],
+    "margin": 31
+   },
+   "prizePaid": false,
+   "bench": {
+    "yessae": 225,
+    "daddygiannis": 169,
+    "addy77": 40,
+    "process0910": 40,
+    "nagic89": 25,
+    "tarunsajnani": 21,
+    "mohit_khatri": 10,
+    "akhil24": 0,
+    "anirudh1525": 0,
+    "mannan7": 0
+   },
+   "benchBlunder": {
+    "team": "yessae",
+    "pts": 225
+   },
+   "playerDailyFile": "players-w5.json"
   }
  ],
  "months": [
