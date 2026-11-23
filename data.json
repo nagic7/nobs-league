@@ -464,7 +464,7 @@
     ],
     "margin": 31
    },
-   "prizePaid": false,
+   "prizePaid": true,
    "bench": {
     "yessae": 225,
     "daddygiannis": 169,
